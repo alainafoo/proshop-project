@@ -5,14 +5,11 @@ import store from './store';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 
-
 import {
-
 createBrowserRouter,
 createRoutesFromElements, 
 Route, 
 RouterProvider
-
 
 } from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen';

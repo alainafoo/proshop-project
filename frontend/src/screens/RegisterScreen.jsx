@@ -96,7 +96,6 @@ const RegisterScreen = () => {
         <Button disabled={isLoading} type='submit' variant='primary'>
           Register
         </Button>
-
         {isLoading && <Loader />}
       </Form>
 
