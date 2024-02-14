@@ -18,6 +18,7 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/bootstrap.custom.css';
+import PrivateRoute from './components/PrivateRoute';
 import './assets/styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -31,7 +32,10 @@ const router = createBrowserRouter(
       <Route path ="/cart" element={<CartScreen/>}/>
       <Route path ="/login" element={<LoginScreen/>}/>
       <Route path ="/register" element={<RegisterScreen/>}/>
-      <Route path ="/shipping" element={<ShippingScreen/>}/>
+      <Route path ="" element={<PrivateRoute/>}>
+        <Route path ="/shipping" element={<ShippingScreen/>}/>
+
+      </Route>
     </Route>
 
   )
