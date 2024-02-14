@@ -16,6 +16,7 @@ RouterProvider
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
+import PaymentScreen from './screens/PaymentScreen';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/bootstrap.custom.css';
 import PrivateRoute from './components/PrivateRoute';
@@ -34,7 +35,7 @@ const router = createBrowserRouter(
       <Route path ="/register" element={<RegisterScreen/>}/>
       <Route path ="" element={<PrivateRoute/>}>
         <Route path ="/shipping" element={<ShippingScreen/>}/>
-
+        <Route path ="/payment" element={<PaymentScreen/>}/>
       </Route>
     </Route>
 
