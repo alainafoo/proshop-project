@@ -13,14 +13,11 @@ import {
     useGetOrderDetailsQuery,
     useGetPaypalClientIdQuery,
     usePayOrderMutation,
+    useDeliverOrderMutation,
 
   } from '../slices/ordersApiSlice';
 
 const OrderScreen = () => {
-
-
-   
-   
 
     const { id: orderId } = useParams()
 
@@ -31,9 +28,10 @@ const OrderScreen = () => {
         error,
       } = useGetOrderDetailsQuery(orderId);
 
-      console.log(order)
+    
 
       const [payOrder, { isLoading: loadingPay}] = usePayOrderMutation();
+      const [deliverOrder, {isLoading: loadingDeliver}] = useDeliverOrderMutation();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
       const [{isPending}, paypalDispatch ] = usePayPalScriptReducer();
       const { userInfo } = useSelector((state) => state.auth);
       const { data: paypal, isLoading: loadingPayPal, error: errorPayPal } = useGetPaypalClientIdQuery();      
@@ -99,6 +97,17 @@ const OrderScreen = () => {
         return orderID;
       });
   }
+
+  const deliverOrderHandler = async () => {
+    try {
+      await deliverOrder(orderId);
+      refetch();
+      toast.success('Order Delivered');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+}
+
 
       
       return isLoading ? (
@@ -232,7 +241,14 @@ const OrderScreen = () => {
                     </ListGroupItem>
 
                   )}
-                  {                  }
+                  { loadingDeliver && <Loader /> }
+                  { userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                    <ListGroupItem>
+                        <Button type = 'button' className = 'btn btn-block' onClick = {deliverOrderHandler}>
+                            Mark As Delivered
+                        </Button>
+                    </ListGroupItem>
+                  )}
                 </ListGroup>
               </Card>
             </Col>
