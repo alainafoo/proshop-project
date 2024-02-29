@@ -1,5 +1,5 @@
 {
-  "name": "mern-project",
+  "name": "frontpage",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
@@ -11,7 +11,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
-    "frontpage": "file:",
     "mern-project": "file:..",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.0",
@@ -29,11 +28,7 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "generate-toc": "markdown-toc -i readme.md"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
