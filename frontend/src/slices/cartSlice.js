@@ -42,9 +42,10 @@ const initialState = localStorage.getItem('cart')
             state.cartItems = [];
             return updateCart(state);
           },
+          resetCart: (state) => (state = initialState),
     },
 });
 
 
-export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;
